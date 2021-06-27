@@ -1,0 +1,33 @@
+{
+  "name": "altrpjb/integration1c-module",
+  "type": "laravel-module",
+  "description": "Plugin integration 1C",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "JonnyBo71",
+      "email": "evgeny.e.borisov@gmail.com"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Modules\\Integration1C\\Providers\\Integration1CServiceProvider"
+      ],
+      "aliases": {
+
+      }
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Integration1C\\": ""
+    }
+  },
+  "require": {
+    "arsengoian/commerce-ml": "dev-master",
+    "carono/commerceml": "^0.2.5"
+  }
+}
+

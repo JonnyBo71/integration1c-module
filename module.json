@@ -1,0 +1,14 @@
+{
+    "name": "Integration1C",
+    "alias": "integration1c",
+    "image": "/modules/integration1c/img/1c.jpg",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Integration1C\\Providers\\Integration1CServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
