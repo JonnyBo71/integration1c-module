@@ -183,10 +183,10 @@
 
                     <div class="col-md-4">
                       <label class="form-label"><?=$guid['name']?></label>
-                      <select class="control-select control-field" id="<?=$guid['alias']?>" name="<?=$guid['alias']?>">
+                      <select class="control-select control-field" id="<?=$guid['alias']?>" name="<? echo 'guids[' . $guid['alias'] . ']'; ?>">
                         <option disabled="" value="" selected></option>
                         <? foreach ($models as $model) : ?>
-                        <option value="<?= $model['id'] ?>" <?=($config['guids'][$guid['alias']] == $model['id']) ? 'selected' : '';?>><?= $model['title'] ?></option>
+                        <option value="<?= $model['id'] ?>" <?=(isset($config['guids'][$guid['alias']]) && $config['guids'][$guid['alias']] == $model['id']) ? 'selected' : '';?>><?= $model['title'] ?></option>
                         <? endforeach; ?>
                       </select>
                     </div>

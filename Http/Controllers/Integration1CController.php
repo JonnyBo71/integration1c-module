@@ -55,6 +55,7 @@ class Integration1CController extends Controller
       $catalog = $this->parser->getCatalog();
       $guid = new Guid();
       $guids = $guid->getItems($catalog->owner->classifier->properties);
+      //dd($guids);
       $config = $this->config;
       return View::make('integration1c::index', compact('models', 'guids', 'config'));
     }
@@ -160,8 +161,9 @@ class Integration1CController extends Controller
       $posts = $request->all();
       foreach ($posts as $key => $post) {
         if (isset($this->config[$key])) {
-          if (is_array($this->config[$key])) {
-            foreach ($this->config[$key] as $k => $v) {
+          if (is_array($post)) {
+            //if (!empty($this->config[$key])) {
+            foreach ($post as $k => $v) {
               $this->config[$key][$k] = $v;
             }
           } else {
