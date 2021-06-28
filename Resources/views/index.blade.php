@@ -195,6 +195,45 @@
                 <? endforeach; ?>
                 </div>
 
+
+              <div class="row g-1">
+                <div class="col-12 mt-3"><h4>Заказы:</h4></div>
+              </div>
+
+              <div class="row g-3">
+
+                <div class="col-md-4">
+                  <label class="form-label">Заказы</label>
+                  <select class="control-select control-field" id="orderModelId" name="orderModelId">
+                    <option disabled="" value="" selected></option>
+                    <? foreach ($models as $model) : ?>
+                    <option value="<?= $model['id'] ?>" <?=($config['orderModelId'] == $model['id']) ? 'selected' : '';?>><?= $model['title'] ?></option>
+                    <? endforeach; ?>
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label">Товары в заказах</label>
+                  <select class="control-select control-field" id="orderItemsModelId" name="orderItemsModelId">
+                    <option disabled="" value="" selected></option>
+                    <? foreach ($models as $model) : ?>
+                    <option value="<?= $model['id'] ?>" <?=($config['orderItemsModelId'] == $model['id']) ? 'selected' : '';?>><?= $model['title'] ?></option>
+                    <? endforeach; ?>
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                  <label class="form-label">Покупатели</label>
+                  <select class="control-select control-field" id="clientModelId" name="clientModelId">
+                    <option disabled="" value="" selected></option>
+                    <? foreach ($models as $model) : ?>
+                    <option value="<?= $model['id'] ?>" <?=($config['clientModelId'] == $model['id']) ? 'selected' : '';?>><?= $model['title'] ?></option>
+                    <? endforeach; ?>
+                  </select>
+                </div>
+
+              </div>
+
               <div class="row g-1">
                 <div class="col-12 mt-3">
                   <button class="btn btn-primary" type="submit">Сохранить</button>

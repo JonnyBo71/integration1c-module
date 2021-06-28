@@ -73,36 +73,43 @@ class Integration1CController extends Controller
 
       if ($catalog = $this->parser->getCatalog()) {
         //dd($catalog->offers);
-
+        if ($this->config['categoryModelId']) {
           $category = new Category();
           $category->getCategories($catalog->owner->classifier->groups);
           $category->save();
-
+        }
+        if ($this->config['unitModelId']) {
           $unit = new Unit();
           $unit->getItems($catalog->owner->classifier->xml->ЕдиницыИзмерения);
           $unit->save();
-
+        }
+        if ($this->config['pricetypeModelId']) {
           $pricetype = new PriceType();
           $pricetype->getItems($catalog->owner->classifier->xml->ТипыЦен);
           $pricetype->save();
-
+        }
+        if ($this->config['storeModelId']) {
           $store = new Store();
           $store->getItems($catalog->owner->classifier->xml->Склады);
           $store->save();
-
+        }
+        if ($this->config['guidModelId']) {
           $guid = new Guid();
           $guid->getItems($catalog->owner->classifier->properties);
           $guid->save();
-
+        }
+        if ($this->config['productModelId']) {
           $product = new Products();
           $product->getItems($catalog->products);
           $product->save();
-
+        }
+        if ($this->config['offerModelId']) {
           if ($offers = $this->parser->getOffers()) {
             $offer = new Offers();
             $offer->getItems($offers->offers);
             $offer->save();
           }
+        }
 
 
         dd($catalog);
