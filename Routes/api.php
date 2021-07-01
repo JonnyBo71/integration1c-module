@@ -22,6 +22,7 @@ Route::prefix('plugins/integration1c')->group(function() {
   Route::get('/export', 'Integration1CController@export');
 
   Route::get('/guids', 'Integration1CController@guids');
+  Route::get('/products', 'Integration1CController@products');
 
   Route::get('/setting', 'Integration1CController@getSetting');
   Route::post('/setting', 'Integration1CController@setSetting');

@@ -64,6 +64,29 @@ class Category
     return null;
   }
 
+  protected function getParent(&$categories, $category_id) {
+    $result = false;
+    if (!empty($categories)) {
+      $key = array_search($category_id, array_column($categories, 'id'));
+      if ($key !== false) {
+        if ($categories[$key]['parent_id'] === null) {
+          $result = $categories[$key]['id'];
+        } else {
+          $result = $this->getParent($categories, $categories[$key]['parent_id']);
+        }
+      }
+      return $result;
+    }
+  }
+
+  public function getParentCategory($category_id) {
+    $modelCurrent = Model::find($this->config['categoryModelId']);
+    $className = $modelCurrent->namespace;
+    $categoryModel = new $className;
+    $categories = $categoryModel->all()->toArray();
+    return $this->getParent($categories, $category_id);
+  }
+
   public function addNewField($fieldname, $fieldtype, $model_id) {
     $model = Model::find($this->config['categoryModelId']);
     if (!Column::where([['model_id', $model->id], ['name', $fieldname]])->first()) {

@@ -37,10 +37,15 @@ class Products
     if (!empty($categories)) {
       foreach ($categories as $cat) {
         $category_id = $category->getIdBy1cId((string)$cat->Ид);
-        if ($connectionModel->where([['product_id', $product_id], ['category_id', $category_id]])->first() === null) {
+        $currentModel = $connectionModel->where([['product_id', $product_id], ['category_id', $category_id]])->first();
+        if ($currentModel === null) {
           $connectionModel->product_id = $product_id;
           $connectionModel->category_id = $category_id;
+          $connectionModel->parent_category_id = $category->getParentCategory($category_id)['id'];
           $connectionModel->save();
+        } else {
+          $currentModel->parent_category_id = $category->getParentCategory($category_id)['id'];
+          $currentModel->save();
         }
       }
     }
@@ -80,6 +85,9 @@ class Products
   }
 
   protected function saveImage($images, $product_id) {
+    Functions::addNewField('product_id', 'bigInteger', $this->config['imageModelId']);
+    Functions::addNewField('filename', 'string', $this->config['imageModelId']);
+    Functions::addNewField('fileurl', 'string', $this->config['imageModelId']);
     $image = Model::find($this->config['imageModelId']);
     $className = $image->namespace;
     $imageModel = new $className;
@@ -113,6 +121,7 @@ class Products
     Functions::addNewField('description', 'longText', $this->config['productModelId']);
     Functions::addNewField('created_at', 'timestamp', $this->config['productModelId']);
     Functions::addNewField('updated_at', 'timestamp', $this->config['productModelId']);
+    Functions::addNewField('parent_category', 'bigInteger', $this->config['productModelId']);
     $modelCurrent = Model::find($this->config['productModelId']);
     $className = $modelCurrent->namespace;
     if (!empty($this->products)) {
