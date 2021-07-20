@@ -65,18 +65,19 @@ class Category
   }
 
   protected function getParent(&$categories, $category_id) {
-    $result = false;
+    $result = null;
     if (!empty($categories)) {
       $key = array_search($category_id, array_column($categories, 'id'));
       if ($key !== false) {
         if ($categories[$key]['parent_id'] === null) {
           $result = $categories[$key]['id'];
         } else {
-          $result = $this->getParent($categories, $categories[$key]['parent_id']);
+			$result = $this->getParent($categories, $categories[$key]['parent_id']);
         }
       }
-      return $result;
+      
     }
+	return $result;
   }
 
   public function getParentCategory($category_id) {
@@ -84,7 +85,9 @@ class Category
     $className = $modelCurrent->namespace;
     $categoryModel = new $className;
     $categories = $categoryModel->all()->toArray();
-    return $this->getParent($categories, $category_id);
+	$res = $this->getParent($categories, $category_id);
+	//dd($res);
+    return $res;
   }
 
   public function addNewField($fieldname, $fieldtype, $model_id) {

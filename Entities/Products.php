@@ -37,14 +37,15 @@ class Products
     if (!empty($categories)) {
       foreach ($categories as $cat) {
         $category_id = $category->getIdBy1cId((string)$cat->Ид);
+		
         $currentModel = $connectionModel->where([['product_id', $product_id], ['category_id', $category_id]])->first();
         if ($currentModel === null) {
           $connectionModel->product_id = $product_id;
           $connectionModel->category_id = $category_id;
-          $connectionModel->parent_category_id = $category->getParentCategory($category_id)['id'];
+          $connectionModel->parent_category_id = $category->getParentCategory($category_id);
           $connectionModel->save();
         } else {
-          $currentModel->parent_category_id = $category->getParentCategory($category_id)['id'];
+		  $currentModel->parent_category_id = $category->getParentCategory($category_id);
           $currentModel->save();
         }
       }
