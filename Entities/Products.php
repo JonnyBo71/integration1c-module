@@ -24,7 +24,7 @@ class Products
   public function getItems($products) {
     if (!empty($products)) {
       foreach ($products as $product) {
-          $this->products[] = ['name' => (string)$product->xml->Наименование, 'id_1c' => (string)$product->xml->Ид, 'barcode' => (string)$product->xml->Штрихкод, 'part_number' => (string)$product->xml->Артикул, 'description' => (string)$product->xml->Описание, 'units' => $product->xml->БазоваяЕдиница, 'category' => $product->xml->Группы, 'property' => $product->xml->ЗначенияСвойств, 'images' => $product->xml->Картинка];
+          $this->products[] = ['name' => (string)$product->xml->Наименование, 'id_1c' => (string)$product->xml->Ид, 'barcode' => (string)$product->xml->Штрихкод, 'part_number' => (string)$product->xml->Артикул, 'site_number' => (string)$product->xml->АртикулСайта, 'description' => (string)$product->xml->Описание, 'units' => $product->xml->БазоваяЕдиница, 'category' => $product->xml->Группы, 'property' => $product->xml->ЗначенияСвойств, 'images' => $product->xml->Картинка];
       }
     }
   }
@@ -37,7 +37,7 @@ class Products
     if (!empty($categories)) {
       foreach ($categories as $cat) {
         $category_id = $category->getIdBy1cId((string)$cat->Ид);
-		
+
         $currentModel = $connectionModel->where([['product_id', $product_id], ['category_id', $category_id]])->first();
         if ($currentModel === null) {
           $connectionModel->product_id = $product_id;
@@ -115,6 +115,7 @@ class Products
   public function save() {
     Functions::addNewField('name', 'string', $this->config['productModelId']);
     Functions::addNewField('part_number', 'string', $this->config['productModelId']);
+    Functions::addNewField('site_number', 'string', $this->config['productModelId']);
     Functions::addNewField('id_1c', 'string', $this->config['productModelId']);
     Functions::addNewField('price', 'float', $this->config['productModelId']);
     Functions::addNewField('unit', 'string', $this->config['productModelId']);
@@ -137,6 +138,7 @@ class Products
           $productModel->description = $product['description'];
           $productModel->barcode = $product['barcode'];
           $productModel->part_number = $product['part_number'];
+          $productModel->site_number = $product['site_number'];
           $productModel->created_at = date('Y-m-d H:i:s');
           $productModel->updated_at = date('Y-m-d H:i:s');
           $productModel->save();
@@ -149,6 +151,7 @@ class Products
           $currentProduct->description = $product['description'];
           $currentProduct->barcode = $product['barcode'];
           $currentProduct->part_number = $product['part_number'];
+          $currentProduct->site_number = $product['site_number'];
           //$currentProduct->created_at = date('Y-m-d H:i:s');
           $currentProduct->updated_at = date('Y-m-d H:i:s');
           $currentProduct->save();

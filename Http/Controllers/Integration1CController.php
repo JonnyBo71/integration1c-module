@@ -2,6 +2,8 @@
 
 namespace Modules\Integration1C\Http\Controllers;
 
+require_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
+
 use App\Altrp\Model;
 use App\Altrp\Column;
 use App\Altrp\Table;
