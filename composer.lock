@@ -1,0 +1,126 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "e90caa8886c451324c5c5c33aa8c31c2",
+    "packages": [
+        {
+            "name": "arsengoian/commerce-ml",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arsengoian/commerce-ml.git",
+                "reference": "a07dc7204801bc5ebdc2666030a8e8d0fafa1f8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arsengoian/commerce-ml/zipball/a07dc7204801bc5ebdc2666030a8e8d0fafa1f8d",
+                "reference": "a07dc7204801bc5ebdc2666030a8e8d0fafa1f8d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "6.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CommerceML\\": [
+                        "src/CommerceML"
+                    ],
+                    "Test\\": [
+                        "tests/unit"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Arsen Goian",
+                    "email": "arsengoian@gmail.com"
+                }
+            ],
+            "description": "Easy-peasy CommerceML 2.10 PHP library",
+            "support": {
+                "issues": "https://github.com/arsengoian/commerce-ml/issues",
+                "source": "https://github.com/arsengoian/commerce-ml/tree/master"
+            },
+            "time": "2020-11-27T11:04:21+00:00"
+        },
+        {
+            "name": "carono/commerceml",
+            "version": "0.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carono/php-commerceml.git",
+                "reference": "9d357db9912ab680bc3932ba7c77a6dbb53c8e42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carono/php-commerceml/zipball/9d357db9912ab680bc3932ba7c77a6dbb53c8e42",
+                "reference": "9d357db9912ab680bc3932ba7c77a6dbb53c8e42",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zenwalker\\CommerceML\\": "src/",
+                    "Zenwalker\\CommerceML\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxim Poletaev",
+                    "email": "zenwalker2@gmail.com",
+                    "homepage": "http://zenwalker.ru"
+                },
+                {
+                    "name": "Aleksandr Kasyanov",
+                    "email": "info@carono.ru",
+                    "homepage": "http://carono.ru"
+                }
+            ],
+            "description": "Library for parsing CommerceML files",
+            "homepage": "https://github.com/zenwalker/php-commerceml",
+            "keywords": [
+                "1c",
+                "commerceml"
+            ],
+            "support": {
+                "source": "https://github.com/carono/php-commerceml/tree/0.2.5"
+            },
+            "time": "2019-06-24T13:49:20+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "arsengoian/commerce-ml": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}
